@@ -35,7 +35,7 @@ const Board = () => {
   return (
     <>
       <div className="status">
-        {winner && <Confetti width={width} height={height} />}
+        {winner && <Confetti width={width} height={height} recycle={false} />}
         <h1>{status}</h1>
       </div>
       <div className="grid">
