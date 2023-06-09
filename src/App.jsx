@@ -1,11 +1,13 @@
 import React from "react";
 import Square from "./Components/Square";
 import { useState } from "react";
+import Confetti from "react-confetti";
 import "./App.css";
 
 const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
+  const { width, height } = window;
   function handleClick(i) {
     const nextSquares = squares.slice();
 
@@ -32,7 +34,10 @@ const Board = () => {
 
   return (
     <>
-      <div className="status">{status}</div>
+      <div className="status">
+        {winner && <Confetti width={width} height={height} />}
+        <h1>{status}</h1>
+      </div>
       <div className="grid">
         <div className="board-row">
           <Square value={squares[0]} onClick={() => handleClick(0)} />
